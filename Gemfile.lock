@@ -435,7 +435,7 @@ DEPENDENCIES
   brakeman
   bson_ext
   cancan
-  coffee-rails (~> 3.2.1)
+  coffee-rails
   database_cleaner
   debugger
   devise
@@ -457,6 +457,7 @@ DEPENDENCIES
   inherited_resources
   jquery-rails
   less
+  less-rails
   libnotify
   metrical
   mongoid
@@ -472,11 +473,10 @@ DEPENDENCIES
   resque
   rolify
   rspec-rails
-  sass-rails (~> 3.2.3)
   simple_form
   simplecov
   therubyracer
   twitter-bootstrap-rails
-  uglifier (>= 1.0.3)
+  uglifier
   unicorn-rails
   will_paginate_mongoid

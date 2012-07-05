@@ -3,9 +3,11 @@ HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
 gem 'rails', '3.2.6'
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'less-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem "therubyracer", :platform => :ruby
+  gem "twitter-bootstrap-rails"
 end
 gem 'jquery-rails'
 gem "debugger", :group => [:development, :test]
@@ -24,8 +26,6 @@ gem "cancan"
 gem "rolify"
 gem "rails-footnotes", :group => :development
 gem "will_paginate_mongoid"
-gem "therubyracer", :group => :assets, :platform => :ruby
-gem "twitter-bootstrap-rails", :group => :assets
 gem "inherited_resources"
 gem "simple_form"
 gem "mongoid-paperclip"
