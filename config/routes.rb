@@ -1,4 +1,6 @@
 Myapp::Application.routes.draw do
+  mount RailsAdmin::Engine => '/rails_admin', :as => 'rails_admin'
+
   authenticated :user do
     root :to => 'home#index'
   end

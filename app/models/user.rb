@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
   extend Rolify
   rolify
 
@@ -47,5 +48,5 @@ class User
   index :email, :unique => true
   field :name
   validates_presence_of :name
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :created_at, :updated_at
 end

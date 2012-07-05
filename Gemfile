@@ -60,3 +60,4 @@ gem "guard-rspec", :group => :development
 gem "guard-redis", :group => :development
 gem "guard-resque", :group => :development
 gem "poltergeist", :group => [:development, :test]
+gem "rails_admin"
