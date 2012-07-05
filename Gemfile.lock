@@ -452,11 +452,9 @@ DEPENDENCIES
   guard-redis
   guard-resque
   guard-rspec
-  haml
   haml-rails
   inherited_resources
   jquery-rails
-  less
   less-rails
   libnotify
   metrical
