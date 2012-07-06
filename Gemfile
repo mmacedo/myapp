@@ -21,6 +21,7 @@ gem 'will_paginate_mongoid'
 gem 'inherited_resources'
 gem 'simple_form'
 gem 'rails_admin'
+gem 'heroku', :group => :production
 
 # Development tools
 gem 'debugger', :group => [:development, :test]
