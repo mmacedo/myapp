@@ -25,7 +25,6 @@ gem 'rails_admin'
 # Development tools
 gem 'debugger', :group => [:development, :test]
 gem 'unicorn-rails', :group => [:development, :test]
-gem 'simplecov', :require => false, :group => :test
 gem 'metrical', :require => false, :group => :development
 gem 'brakeman', :require => false, :group => :development
 gem 'rails_best_practices', :require => false, :group => :development
@@ -38,6 +37,7 @@ gem 'mongoid-rspec', '1.4.5', :group => :test
 gem 'factory_girl_rails', :group => [:development, :test]
 gem 'email_spec', :group => :test
 gem 'poltergeist', :group => [:development, :test]
+gem 'simplecov', :require => false, :group => :test
 
 # Guard
 group :development do

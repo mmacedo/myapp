@@ -29,3 +29,4 @@ gem 'mongoid-rspec', '= 1.4.5', :group => :test
 gem 'factory_girl_rails', :group => [:development, :test]
 gem 'email_spec', :group => :test
 gem 'poltergeist', :group => [:development, :test]
+gem 'simplecov', :require => false, :group => :test
