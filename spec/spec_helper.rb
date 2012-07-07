@@ -24,11 +24,12 @@ Spork.prefork do
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
-  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f }
 
   RSpec.configure do |config|
-    config.include(EmailSpec::Helpers)
-    config.include(EmailSpec::Matchers)
+    config.include EmailSpec::Helpers
+    config.include EmailSpec::Matchers
+    config.include ControllerMacros, type: :controller
     config.mock_with :rspec
     config.infer_base_class_for_anonymous_controllers = true
     config.treat_symbols_as_metadata_keys_with_true_values = true
