@@ -5,7 +5,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'haml-rails'
   gem 'uglifier'
-  gem 'therubyracer', :platform => :ruby
+  gem 'therubyracer', platform: :ruby
   gem 'twitter-bootstrap-rails'
 end
 gem 'jquery-rails'
@@ -21,24 +21,24 @@ gem 'will_paginate_mongoid'
 gem 'inherited_resources'
 gem 'simple_form'
 gem 'rails_admin'
-gem 'heroku', :group => :production
+gem 'heroku', group: :production
 
 # Development tools
-gem 'debugger', :group => [:development, :test]
-gem 'unicorn-rails', :group => [:development, :test]
-gem 'metrical', :require => false, :group => :development
-gem 'brakeman', :require => false, :group => :development
-gem 'rails_best_practices', :require => false, :group => :development
-gem 'rails-footnotes', :group => :development
+gem 'debugger', group: [:development, :test]
+gem 'unicorn-rails', group: [:development, :test]
+gem 'metrical', require: false, group: :development
+gem 'brakeman', require: false, group: :development
+gem 'rails_best_practices', require: false, group: :development
+gem 'rails-footnotes', group: :development
 
 # Test
-gem 'rspec-rails', :group => [:development, :test]
-gem 'database_cleaner', :group => :test
-gem 'mongoid-rspec', '1.4.5', :group => :test
-gem 'factory_girl_rails', :group => [:development, :test]
-gem 'email_spec', :group => :test
-gem 'poltergeist', :group => [:development, :test]
-gem 'simplecov', :require => false, :group => :test
+gem 'rspec-rails', group: [:development, :test]
+gem 'database_cleaner', group: :test
+gem 'mongoid-rspec', '1.4.5', group: :test
+gem 'factory_girl_rails', group: [:development, :test]
+gem 'email_spec', group: :test
+gem 'poltergeist', group: [:development, :test]
+gem 'simplecov', require: false, group: :test
 
 # Guard
 group :development do
@@ -68,3 +68,4 @@ group :development do
   gem 'guard-redis'
   gem 'guard-resque'
 end
+gem 'guard-spork', group: :test
