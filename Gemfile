@@ -12,8 +12,6 @@ gem 'jquery-rails'
 gem 'bson_ext'
 gem 'mongoid'
 gem 'mongoid-paperclip'
-gem 'redis'
-gem 'resque'
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
@@ -28,7 +26,7 @@ gem 'debugger', group: [:development, :test]
 gem 'unicorn-rails', group: [:development, :test]
 gem 'metrical', require: false, group: :development
 gem 'brakeman', require: false, group: :development
-gem 'rails_best_practices', require: false, group: :development
+gem 'rails_best_practices', require: false, group: :development, git: 'https://github.com/railsbp/rails_best_practices'
 gem 'rails-footnotes', group: :development
 
 # Test
@@ -39,6 +37,7 @@ gem 'factory_girl_rails', group: [:development, :test]
 gem 'email_spec', group: :test
 gem 'poltergeist', group: [:development, :test]
 gem 'simplecov', require: false, group: :test
+gem 'spork', group: :test
 
 # Guard
 group :development do
@@ -62,10 +61,8 @@ group :development do
   gem 'guard-rails_best_practices'
   gem 'guard-readme-on-github'
   gem 'guard-rails-assets'
-  gem 'guard-rails'
+  gem 'guard-rails', git: 'https://github.com/johnbintz/guard-rails'
   gem 'guard-livereload'
   gem 'guard-rspec'
-  gem 'guard-redis'
-  gem 'guard-resque'
 end
 gem 'guard-spork', group: :test

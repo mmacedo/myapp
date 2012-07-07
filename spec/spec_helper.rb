@@ -12,12 +12,9 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
 
   require "rails/mongoid"
-  Spork.trap_class_method(Rails::Mongoid, :load_models)
-
-  # Prevent main application to eager_load in the prefork block (do not load files in autoload_paths)
-  Spork.trap_method(Rails::Application, :eager_load!)
-
   require "rails/application"
+  Spork.trap_class_method(Rails::Mongoid, :load_models)
+  Spork.trap_method(Rails::Application, :eager_load!)
   Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
 
   require File.expand_path("../../config/environment", __FILE__)
@@ -35,7 +32,7 @@ Spork.prefork do
     config.mock_with :rspec
     config.infer_base_class_for_anonymous_controllers = true
     config.treat_symbols_as_metadata_keys_with_true_values = true
-    config.filter_run :focus => true
+    config.filter_run focus: true
     config.run_all_when_everything_filtered = true
 
     # Clean up the database

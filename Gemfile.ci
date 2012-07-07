@@ -12,8 +12,6 @@ gem 'jquery-rails'
 gem 'bson_ext'
 gem 'mongoid'
 gem 'mongoid-paperclip'
-gem 'redis'
-gem 'resque'
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
@@ -30,3 +28,4 @@ gem 'factory_girl_rails', group: [:development, :test]
 gem 'email_spec', group: :test
 gem 'poltergeist', group: [:development, :test]
 gem 'simplecov', require: false, group: :test
+gem 'spork', group: :test

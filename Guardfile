@@ -1,78 +1,52 @@
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
-
-guard 'brakeman' do
-  watch(%r{^app/.+\.(erb|haml|rhtml|rb)$})
-  watch(%r{^config/.+\.rb$})
-  watch(%r{^lib/.+\.rb$})
-  watch('Gemfile')
-end
-
 guard 'bundler' do
   watch('Gemfile')
-  # Uncomment next line if Gemfile contain `gemspec' command
-  # watch(/^.+\.gemspec/)
 end
 
 guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml|slim)})
+  watch(%r{app/views/.+\.(erb|haml)})
   watch(%r{app/helpers/.+\.rb})
   watch(%r{public/.+\.(css|js|html)})
   watch(%r{config/locales/.+\.yml})
-  # Rails Assets Pipeline
   watch(%r{(app|vendor)/assets/\w+/(.+\.(css|js|html)).*})  { |m| "/assets/#{m[2]}" }
 end
 
-guard 'rails' do
-  watch('Gemfile.lock')
-  watch(%r{^(config|lib)/.*})
-end
-
-
-
-# Make sure this guard is ABOVE any other guards using assets such as jasmine-headless-webkit
-# It is recommended to make explicit list of assets in `config/application.rb`
-# config.assets.precompile = ['application.js', 'application.css', 'all-ie.css']
 guard 'rails-assets' do
   watch(%r{^app/assets/.+$})
   watch('config/application.rb')
 end
 
+guard 'brakeman', chatty: true do
+  watch(%r{^app/.+\.(erb|haml|rb)$})
+  watch(%r{^config/.+\.rb$})
+  watch(%r{^lib/.+\.rb$})
+  watch('Gemfile.lock')
+end
+
 guard 'rails_best_practices' do
-  watch(%r{^app/(.+)\.rb$})
+  watch(%r{^(app|spec)/(.+)\.rb$})
+  watch('config/rails_best_practices.yml')
 end
 
 guard 'readme-on-github' do
   watch(/readme\.(md|markdown)/i)
 end
 
-# Possible options are :port, :executable, and :pidfile
-guard 'redis'
-
-### Guard::Resque
-#  available options:
-#  - :task (defaults to 'resque:work' if :count is 1; 'resque:workers', otherwise)
-#  - :verbose / :vverbose (set them to anything but false to activate their respective modes)
-#  - :trace
-#  - :queue (defaults to "*")
-#  - :count (defaults to 1)
-#  - :environment (corresponds to RAILS_ENV for the Resque worker)
-guard 'resque', environment: 'development' do
-  watch(%r{^app/(.+)\.rb$})
-  watch(%r{^lib/(.+)\.rb$})
-end
-
-guard 'spork', rspec_env: { 'RAILS_ENV' => 'test' } do
+guard 'spork', rspec_env: { 'RAILS_ENV' => 'test' },
+               cucumber: false,
+               test_unit: false,
+               wait: 60 do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch('config/environments/test.rb')
   watch(%r{^config/initializers/.+\.rb$})
-  watch('Gemfile')
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb') { :rspec }
 end
 
-guard 'rspec', version: 2, cli: '--drb', all_on_start: false, all_after_pass: false do
+guard 'rspec', version: 2,
+               cli: '--drb',
+               all_on_start: false,
+               all_after_pass: false do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
@@ -91,4 +65,9 @@ guard 'rspec', version: 2, cli: '--drb', all_on_start: false, all_after_pass: fa
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
+end
+
+guard :rails, server: :unicorn do
+  watch('Gemfile.lock')
+  watch(%r{^(config|lib)/.*})
 end
