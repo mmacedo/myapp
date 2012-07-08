@@ -1,0 +1,10 @@
+= simple_form_for(area) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :type
+    = f.input :parent, collection: Area.all.where(:_id.ne => area._id)
+
+  .form-actions
+    = f.button :submit
