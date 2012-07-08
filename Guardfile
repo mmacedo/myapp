@@ -3,11 +3,17 @@ guard 'bundler' do
 end
 
 guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml)})
+  watch(%r{app/views/.+\.haml})
   watch(%r{app/helpers/.+\.rb})
   watch(%r{public/.+\.(css|js|html)})
   watch(%r{config/locales/.+\.yml})
   watch(%r{(app|vendor)/assets/\w+/(.+\.(css|js|html)).*})  { |m| "/assets/#{m[2]}" }
+end
+
+guard :rails, environment: :development,
+              server: :unicorn do
+  watch('Gemfile.lock')
+  watch(%r{^(config|lib)/.*})
 end
 
 guard 'rails-assets' do
@@ -66,9 +72,4 @@ guard 'rspec', version: 2,
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
-end
-
-guard :rails, server: :unicorn do
-  watch('Gemfile.lock')
-  watch(%r{^(config|lib)/.*})
 end

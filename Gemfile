@@ -3,11 +3,12 @@ gem 'rails', '3.2.6'
 group :assets do
   gem 'less-rails'
   gem 'coffee-rails'
-  gem 'haml-rails'
   gem 'uglifier'
   gem 'therubyracer', platform: :ruby
   gem 'twitter-bootstrap-rails'
 end
+gem "haml"
+gem 'haml-rails', group: :development
 gem 'jquery-rails'
 gem 'bson_ext'
 gem 'mongoid'
@@ -20,6 +21,7 @@ gem 'inherited_resources'
 gem 'simple_form'
 gem 'rails_admin'
 gem 'heroku', group: :production
+gem 'yajl-ruby'
 
 # Development tools
 gem 'debugger', group: [:development, :test]
@@ -63,6 +65,7 @@ group :development do
   gem 'guard-rails-assets'
   gem 'guard-rails', git: 'https://github.com/johnbintz/guard-rails'
   gem 'guard-livereload'
+  gem 'rack-livereload'
   gem 'guard-rspec'
 end
 gem 'guard-spork', group: :test
