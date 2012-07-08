@@ -26,10 +26,12 @@ gem 'yajl-ruby'
 # Development tools
 gem 'debugger', group: [:development, :test]
 gem 'unicorn-rails', group: [:development, :test]
-gem 'metrical', require: false, group: :development
-gem 'brakeman', require: false, group: :development
-gem 'rails_best_practices', require: false, group: :development, git: 'https://github.com/railsbp/rails_best_practices'
-gem 'rails-footnotes', group: :development
+group :development do
+  gem 'metrical', require: false
+  gem 'brakeman', require: false
+  gem 'rails_best_practices', require: false, git: 'https://github.com/railsbp/rails_best_practices'
+  gem 'rails-footnotes'
+end
 
 # Test
 gem 'rspec-rails', group: [:development, :test]
@@ -63,7 +65,8 @@ group :development do
   gem 'guard-rails_best_practices'
   gem 'guard-readme-on-github'
   gem 'guard-rails-assets'
-  gem 'guard-rails', git: 'https://github.com/johnbintz/guard-rails'
+  gem 'guard-rails', git: 'https://github.com/mmacedo/guard-rails',
+                     branch: 'environment'
   gem 'guard-livereload'
   gem 'rack-livereload'
   gem 'guard-rspec'

@@ -1,6 +1,7 @@
 GIT
-  remote: https://github.com/johnbintz/guard-rails
-  revision: 885fc3c837731bc0ef5547a8982e7e24b6481ece
+  remote: https://github.com/mmacedo/guard-rails
+  revision: 0435a4c17cebe1de84a2907bd894f1db4771afdc
+  branch: environment
   specs:
     guard-rails (0.1.0)
       guard (>= 0.2.2)
