@@ -7,10 +7,8 @@ group :assets do
   gem 'therubyracer', platform: :ruby
   gem 'twitter-bootstrap-rails'
 end
-gem "haml"
-gem 'haml-rails', group: :development
+gem 'haml-rails'
 gem 'jquery-rails'
-gem 'bson_ext'
 gem 'mongoid'
 gem 'mongoid-paperclip'
 gem 'devise'
@@ -20,17 +18,17 @@ gem 'will_paginate_mongoid'
 gem 'inherited_resources'
 gem 'simple_form'
 gem 'rails_admin'
-gem 'heroku', group: :production
+gem 'bson_ext'
 gem 'yajl-ruby'
+gem 'puma'
 
 # Development tools
 gem 'debugger', group: [:development, :test]
-gem 'unicorn-rails', group: [:development, :test]
 group :development do
-  gem 'metrical', require: false
   gem 'brakeman', require: false
   gem 'rails_best_practices', require: false, git: 'https://github.com/railsbp/rails_best_practices'
   gem 'rails-footnotes'
+  gem 'heroku', require: false
 end
 
 # Test
@@ -65,8 +63,7 @@ group :development do
   gem 'guard-rails_best_practices'
   gem 'guard-readme-on-github'
   gem 'guard-rails-assets'
-  gem 'guard-rails', git: 'https://github.com/mmacedo/guard-rails',
-                     branch: 'environment'
+  gem 'guard-rails', git: 'https://github.com/johnbintz/guard-rails'
   gem 'guard-livereload'
   gem 'rack-livereload'
   gem 'guard-rspec'

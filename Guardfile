@@ -11,7 +11,7 @@ guard 'livereload' do
 end
 
 guard :rails, environment: :development,
-              server: :unicorn do
+              server: :puma do
   watch('Gemfile.lock')
   watch(%r{^(config|lib)/.*})
 end

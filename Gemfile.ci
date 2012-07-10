@@ -3,13 +3,12 @@ gem 'rails', '3.2.6'
 group :assets do
   gem 'less-rails'
   gem 'coffee-rails'
-  gem 'haml-rails'
   gem 'uglifier'
   gem 'therubyracer', platform: :ruby
   gem 'twitter-bootstrap-rails'
 end
+gem 'haml-rails'
 gem 'jquery-rails'
-gem 'bson_ext'
 gem 'mongoid'
 gem 'mongoid-paperclip'
 gem 'devise'
@@ -19,6 +18,8 @@ gem 'will_paginate_mongoid'
 gem 'inherited_resources'
 gem 'simple_form'
 gem 'rails_admin'
+gem 'bson_ext'
+gem 'yajl-ruby'
 
 # Test
 gem 'rspec-rails', group: [:development, :test]
