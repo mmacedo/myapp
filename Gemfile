@@ -14,7 +14,7 @@ gem 'mongoid-paperclip'
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
-gem 'will_paginate_mongoid'
+gem 'kaminari'
 gem 'inherited_resources'
 gem 'simple_form'
 gem 'rails_admin'
@@ -34,7 +34,7 @@ end
 # Test
 gem 'rspec-rails', group: [:development, :test]
 gem 'database_cleaner', group: :test
-gem 'mongoid-rspec', '1.4.5', group: :test
+gem 'mongoid-rspec', group: :test
 gem 'factory_girl_rails', group: [:development, :test]
 gem 'email_spec', group: :test
 gem 'poltergeist', group: [:development, :test]

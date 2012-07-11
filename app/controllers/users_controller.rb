@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
+  inherit_resources
   before_filter :authenticate_user!
+  actions :index, :show
+  has_scope :page, default: 1
 
   def index
     authorize! :index, @user, message: 'Not authorized as an administrator.'
-    @users = User.paginate(page: params[:page])
-  end
-
-  def show
-    @user = User.find(params[:id])
+    index!
   end
 
 end
