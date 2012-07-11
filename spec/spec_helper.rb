@@ -47,6 +47,14 @@ Spork.prefork do
       DatabaseCleaner.clean
     end
 
+    Devise.stretches = 1
+    Rails.logger.level = 4
+    config.before(:all) do
+      DeferredGarbageCollection.start
+    end
+    config.after(:all) do
+      DeferredGarbageCollection.reconsider
+    end
   end
 
 end
