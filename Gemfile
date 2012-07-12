@@ -18,9 +18,10 @@ gem 'kaminari'
 gem 'inherited_resources'
 gem 'simple_form'
 gem 'rails_admin'
-gem 'bson_ext'
+gem 'bson_ext', platform: :ruby
 gem 'yajl-ruby'
 gem 'puma'
+gem 'i18n-missing_translations', group: [:test, :development]
 
 # Development tools
 gem 'debugger', group: [:development, :test]
@@ -30,7 +31,6 @@ group :development do
   gem 'rails-footnotes'
   gem 'heroku', require: false
 end
-gem 'i18n-missing_translations', group: [:test, :development]
 
 # Test
 gem 'rspec-rails', group: [:development, :test]

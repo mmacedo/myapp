@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
 gem 'rails', '3.2.6'
 group :assets do
   gem 'less-rails'
@@ -20,6 +21,7 @@ gem 'simple_form'
 gem 'rails_admin'
 gem 'bson_ext'
 gem 'yajl-ruby'
+gem 'i18n-missing_translations', group: [:test, :development]
 
 # Test
 gem 'rspec-rails', group: [:development, :test]
