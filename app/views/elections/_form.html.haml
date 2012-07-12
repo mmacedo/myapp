@@ -1,0 +1,11 @@
+= simple_form_for(election) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :area, collection: Area.all
+    = f.input :election_start
+    = f.input :election_end
+    = f.input :post
+
+  .form-actions
+    = f.button :submit

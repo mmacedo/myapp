@@ -2,6 +2,8 @@
 %ul.nav
   %li
     = link_to('Areas', areas_path)
+  %li
+    = link_to('Elections', elections_path)
   - if user_signed_in?
     %li
       = link_to('Logout', destroy_user_session_path, method: 'delete')

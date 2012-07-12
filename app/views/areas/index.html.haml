@@ -11,10 +11,9 @@
 
   - @areas.each do |area|
     %tr
-      %td= area.name
+      %td= link_to area.name, area
       %td= area.type
-      %td= area.parent
-      %td= link_to 'Show', area
+      %td= link_to area.parent.name, area.parent unless area.parent.nil?
       %td= link_to 'Edit', edit_area_path(area)
       %td= link_to 'Destroy', area, data: { confirm: 'Are you sure?' }, method: :delete
 

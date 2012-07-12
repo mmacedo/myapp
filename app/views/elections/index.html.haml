@@ -1,0 +1,27 @@
+%h1 Listing elections
+
+%table
+  %tr
+    %th Area
+    %th Election start
+    %th Election end
+    %th Post
+    %th
+    %th
+    %th
+
+  - @elections.each do |election|
+    %tr
+      %td= link_to election.area.name, election.area
+      %td= election.election_start
+      %td= election.election_end
+      %td= election.post
+      %td= link_to 'Show', election
+      %td= link_to 'Edit', edit_election_path(election)
+      %td= link_to 'Destroy', election, confirm: 'Are you sure?', method: :delete
+
+= paginate @elections
+
+%br
+
+= link_to 'New Election', new_election_path

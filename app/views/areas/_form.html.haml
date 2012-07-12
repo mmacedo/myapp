@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :name
     = f.input :type
-    = f.input :parent, collection: Area.all.where(:_id.ne => area._id)
+    = f.input :parent_id, collection: Area.all.where(:_id.ne => area._id), value_method: :_id, label_method: :name
 
   .form-actions
     = f.button :submit

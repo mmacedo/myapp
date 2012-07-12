@@ -59,6 +59,11 @@ Spork.prefork do
     config.after(:all) do
       DeferredGarbageCollection.reconsider
     end
+
+    require 'i18n/missing_translations'
+    config.after(:suite) do
+      I18n.missing_translations.dump
+    end
   end
 
 end

@@ -1,0 +1,13 @@
+---
+en:
+  mongoid:
+    errors:
+      models:
+        election:
+          attributes:
+            election_start:
+              inverted_range: The election start must be before its end! Duh!
+        area:
+          attributes:
+            parent:
+              ciclic_reference: 'Ciclic reference found, an area cannot be parent of itself!'

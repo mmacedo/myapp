@@ -8,7 +8,7 @@
   = @area.type
 %p
   %b Parent:
-  = @area.parent
+  = "#{@area.parent.name} (#{@area.parent.type})" if @area.parent
 
 = link_to 'Edit', edit_area_path(@area)
 \|

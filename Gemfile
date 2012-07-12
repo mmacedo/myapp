@@ -30,6 +30,7 @@ group :development do
   gem 'rails-footnotes'
   gem 'heroku', require: false
 end
+gem 'i18n-missing_translations', group: [:test, :development]
 
 # Test
 gem 'rspec-rails', group: [:development, :test]

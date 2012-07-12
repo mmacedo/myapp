@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :area do
-    name "US"
+    sequence(:name) {|i| "US#{i}" }
     type "Country"
   end
 end

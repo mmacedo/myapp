@@ -36,12 +36,56 @@ describe Area do
       build_stubbed(:area, name: "us").should be_valid
     end
 
+    it "should reject duplicate names" do
+      create(:area, name: 'us')
+      build_stubbed(:area, name: 'us').should_not be_valid
+    end
+
+    it "should reject same name with different case" do
+      create(:area, name: 'us')
+      build_stubbed(:area, name: 'US').should_not be_valid
+    end
+
+    it "should accept duplicate names with different parents" do
+      us = create(:area, name: 'us')
+      br = create(:area, name: 'br')
+      create(:area, name: 'sc', parent: us)
+      build_stubbed(:area, name: 'sc', parent: br).should be_valid
+    end
+
   end
 
   describe "type" do
 
     it "should require a type" do
       build_stubbed(:area, type: "").should_not be_valid
+    end
+
+  end
+
+  describe "parent" do
+
+    it "should not allow to be parent of itself" do
+      area = create(:area)
+      area.parent = area
+      area.should_not be_valid
+    end
+
+    it "should not allow to create circular reference" do
+      area1 = create(:area)
+      area2 = create(:area, parent: area1)
+      area3 = create(:area, parent: area2)
+      area1.parent = area3
+      area1.should_not be_valid
+    end
+
+    it "should not allow area nesting deeper than 20 levels" do
+      parent = create(:area)
+      (2..20).each do
+        parent = create(:area, parent: parent)
+      end
+      # 21st level
+      build_stubbed(:area, parent: parent).should_not be_valid
     end
 
   end

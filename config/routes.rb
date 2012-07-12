@@ -1,5 +1,7 @@
 Myapp::Application.routes.draw do
 
+  resources :elections
+
   mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
 
   authenticated :user do

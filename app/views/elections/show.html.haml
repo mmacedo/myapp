@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Area:
+  = "#{@election.area.name} (#{@election.area.type})" if @election.area
+%p
+  %b Election start:
+  = @election.election_start
+%p
+  %b Election end:
+  = @election.election_end
+%p
+  %b Post:
+  = @election.post
+
+= link_to 'Edit', edit_election_path(@election)
+\|
+= link_to 'Back', elections_path
