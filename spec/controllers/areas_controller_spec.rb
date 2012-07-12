@@ -3,12 +3,12 @@ require 'spec_helper'
 describe AreasController do
 
   def valid_attributes
-    FactoryGirl.attributes_for :area
+    attributes_for :area
   end
 
   describe "GET index" do
     it "assigns all areas as @areas" do
-      area = Area.create! valid_attributes
+      area = create(:area)
       get :index, {}
       assigns(:areas).should eq([area])
     end
@@ -16,7 +16,7 @@ describe AreasController do
 
   describe "GET show" do
     it "assigns the requested area as @area" do
-      area = Area.create! valid_attributes
+      area = create(:area)
       get :show, {id: area.to_param}
       assigns(:area).should eq(area)
     end
@@ -39,7 +39,7 @@ describe AreasController do
 
     describe "GET edit" do
       it "assigns the requested area as @area" do
-        area = Area.create! valid_attributes
+        area = create(:area)
         get :edit, {id: area.to_param}
         assigns(:area).should eq(area)
       end
@@ -85,7 +85,7 @@ describe AreasController do
     describe "PUT update" do
       describe "with valid params" do
         it "updates the requested area" do
-          area = Area.create! valid_attributes
+          area = create(:area)
           # Assuming there are no other areas in the database, this
           # specifies that the Area created on the previous line
           # receives the :update_attributes message with whatever params are
@@ -96,13 +96,13 @@ describe AreasController do
         end
 
         it "assigns the requested area as @area" do
-          area = Area.create! valid_attributes
+          area = create(:area)
           put :update, {id: area.to_param, area: valid_attributes}
           assigns(:area).should eq(area)
         end
 
         it "redirects to the area" do
-          area = Area.create! valid_attributes
+          area = create(:area)
           put :update, {id: area.to_param, area: valid_attributes}
           response.should redirect_to(area)
         end
@@ -110,7 +110,7 @@ describe AreasController do
 
       describe "with invalid params" do
         it "assigns the area as @area" do
-          area = Area.create! valid_attributes
+          area = create(:area)
           # Trigger the behavior that occurs when invalid params are submitted
           Area.any_instance.stub(:save).and_return(false)
           put :update, {id: area.to_param, area: {}}
@@ -118,7 +118,7 @@ describe AreasController do
         end
 
         it "re-renders the 'edit' template" do
-          area = Area.create! valid_attributes
+          area = create(:area)
           # Trigger the behavior that occurs when invalid params are submitted
           Area.any_instance.stub_chain(:errors, :empty?).and_return(false)
           Area.any_instance.stub_chain(:errors, :clear).and_return(nil)
@@ -130,14 +130,14 @@ describe AreasController do
 
     describe "DELETE destroy" do
       it "destroys the requested area" do
-        area = Area.create! valid_attributes
+        area = create(:area)
         expect {
           delete :destroy, {id: area.to_param}
         }.to change(Area, :count).by(-1)
       end
 
       it "redirects to the areas list" do
-        area = Area.create! valid_attributes
+        area = create(:area)
         delete :destroy, {id: area.to_param}
         response.should redirect_to(areas_url)
       end

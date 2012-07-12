@@ -27,6 +27,7 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f }
 
   RSpec.configure do |config|
+    config.include FactoryGirl::Syntax::Methods
     config.include EmailSpec::Helpers
     config.include EmailSpec::Matchers
     config.include ControllerMacros, type: :controller
@@ -43,12 +44,15 @@ Spork.prefork do
       DatabaseCleaner.orm = "mongoid"
     end
 
-    config.before(:each) do
+    config.before(:each) do |x|
       DatabaseCleaner.clean
+
+      full_description = x.example.metadata[:full_description]
+      Rails.logger.info "\n\n#{full_description}\n" +
+                        "#{'-' * (full_description.length)}"
     end
 
     Devise.stretches = 1
-    Rails.logger.level = 4
     config.before(:all) do
       DeferredGarbageCollection.start
     end
